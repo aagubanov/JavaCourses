@@ -117,9 +117,19 @@ public class Gubanov
 
     System.out.printf("Введите массу %d-го предмета: ", order);
     double mass = scanner.nextDouble();
+    while (mass < 0)
+    {
+      System.out.printf("Введите неотрицательную массу %d-го предмета: ", order);
+      mass = scanner.nextDouble();
+    }
 
     System.out.printf("Введите объём %d-го предмета: ", order);
     double volume = scanner.nextDouble();
+    while (volume < 0)
+    {
+      System.out.printf("Введите неотрицательный объём %d-го предмета: ", order);
+      volume = scanner.nextDouble();
+    }
 
     return new Item(mass, volume);
   }
