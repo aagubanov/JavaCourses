@@ -99,7 +99,8 @@ public class Gubanov
       totalVolume += item.volume();
     }
 
-    double meanDensity = totalMass / totalVolume;
+    Item totalItem = new Item(totalMass, totalVolume);
+    double meanDensity = totalItem.density();
     System.out.printf("Средняя (по объёму) плотность для данных предметов равна %s", formatDensity(meanDensity));
   }
 
