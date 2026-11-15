@@ -6,8 +6,13 @@ public class Gubanov
   {
     public double density()
     {
-      // Black holes are allowed
-      return volume != 0 ? mass / volume : Double.POSITIVE_INFINITY;
+      if (volume != 0)
+      {
+        return mass / volume;
+      }
+
+      // Black holes and photons are allowed
+      return mass > 0 ? Double.POSITIVE_INFINITY : 0;
     }
   }
 
