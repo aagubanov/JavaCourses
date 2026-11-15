@@ -119,24 +119,36 @@ public class Gubanov
   private static Item readItemProperties(Scanner scanner, int index)
   {
     int order = index + 1;
+    double mass;
+    double volume;
 
-    System.out.printf("Введите массу %d-го предмета: ", order);
-    double mass = scanner.nextDouble();
-    while (mass < 0)
+    String prompt = "Введите неотрицательную массу %d-го предмета: ".formatted(order);
+    do
     {
-      System.out.printf("Введите неотрицательную массу %d-го предмета: ", order);
-      mass = scanner.nextDouble();
+      mass = readDouble(scanner, prompt);
     }
+    while (mass < 0);
 
-    System.out.printf("Введите объём %d-го предмета: ", order);
-    double volume = scanner.nextDouble();
-    while (volume < 0)
+    prompt = "Введите неотрицательный объём %d-го предмета: ".formatted(order);
+    do
     {
-      System.out.printf("Введите неотрицательный объём %d-го предмета: ", order);
-      volume = scanner.nextDouble();
+      volume = readDouble(scanner, prompt);
     }
+    while (volume < 0);
 
     return new Item(mass, volume);
+  }
+
+  private static double readDouble(Scanner scanner, String prompt)
+  {
+    System.out.print(prompt);
+    while (!scanner.hasNextDouble())
+    {
+      scanner.nextLine();
+      System.out.print(prompt);
+    }
+
+    return scanner.nextDouble();
   }
 
   private static String formatDensity(double density)
