@@ -3,6 +3,7 @@ import java.util.ArrayList;
 public class InputData
 {
   private int numberOfGrasshopperJumps;
+  private Point frogLocation;
   private int frogTongueLength;
   private final ArrayList<Point> grasshopperLocations = new ArrayList<Point>();
 
@@ -14,6 +15,16 @@ public class InputData
   public void setNumberOfGrasshopperJumps(int numberOfGrasshopperJumps)
   {
     this.numberOfGrasshopperJumps = numberOfGrasshopperJumps;
+  }
+
+  public Point getFrogLocation()
+  {
+    return frogLocation;
+  }
+
+  public void setFrogLocation(Point frogLocation)
+  {
+    this.frogLocation = frogLocation;
   }
 
   public int getFrogTongueLength()
@@ -31,8 +42,8 @@ public class InputData
     grasshopperLocations.add(location);
   }
 
-  public ArrayList<Point> getGrasshopperLocations()
+  public Point getGrasshopperLocation(int index)
   {
-    return grasshopperLocations;
+    return grasshopperLocations.get(index);
   }
 }

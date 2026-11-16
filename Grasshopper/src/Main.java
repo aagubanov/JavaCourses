@@ -8,6 +8,27 @@ void main()
   {
     return;
   }
+
+  Grasshopper grasshopper = new Grasshopper();
+  Frog frog = new Frog(inputData.getFrogLocation(), inputData.getFrogTongueLength());
+
+  Point frogLocation = frog.getLocation();
+  int frogTongueLength = frog.getTongueLength();
+
+  int fedIndex = 0;
+  for (int i = 0; i < inputData.getNumberOfGrasshopperJumps(); i++)
+  {
+    Point nextLocation = inputData.getGrasshopperLocation(i);
+    grasshopper.jumpsTo(nextLocation);
+
+    if (grasshopper.isFed(frogLocation, frogTongueLength))
+    {
+      fedIndex = i + 1;
+      break;
+    }
+  }
+
+  System.out.println(fedIndex);
 }
 
 private static InputData fillInputData(String inputFileName)
@@ -28,7 +49,7 @@ private static InputData fillInputData(String inputFileName)
 
   InputData inputData = new InputData();
 
-  // First line: a number of grasshopper's jumps; coordinates of his initial position; length of a frog's tongue
+  // First line: a number of grasshopper's jumps; coordinates of a frog; length of a frog's tongue
   int lineNumbersCount = 4;
   int[] firstLineNumbers = getIntegersFromLine(inputLines[0], lineNumbersCount);
 
@@ -47,7 +68,10 @@ private static InputData fillInputData(String inputFileName)
 
   inputData.setNumberOfGrasshopperJumps(linesCount - 1);
 
-  // Initial grasshopper's coordinates can be ignored
+  int frogX = firstLineNumbers[1];
+  int frogY = firstLineNumbers[2];
+  inputData.setFrogLocation(new Point(frogX, frogY));
+
   int frogTongueLength = firstLineNumbers[3];
   if (frogTongueLength <= 0)
   {
@@ -62,9 +86,9 @@ private static InputData fillInputData(String inputFileName)
   for (int i = 1; i < linesCount; i++)
   {
     int[] coordinates = getIntegersFromLine(inputLines[i], lineNumbersCount);
-    if (coordinates == null)
+    if (coordinates == null || coordinates.length < lineNumbersCount)
     {
-      System.out.printf("ОШИБКА: некорректные координаты в строке %d входного файла!\n", i);
+      System.out.printf("ОШИБКА: не хватает данных в %d-й строке входного файла!\n", i);
       return null;
     }
 
