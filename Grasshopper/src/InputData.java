@@ -42,8 +42,8 @@ public class InputData
     grasshopperLocations.add(location);
   }
 
-  public Point getGrasshopperLocation(int index)
+  public ArrayList<Point> getGrasshopperLocations()
   {
-    return grasshopperLocations.get(index);
+    return grasshopperLocations;
   }
 }

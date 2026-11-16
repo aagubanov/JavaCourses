@@ -2,7 +2,7 @@ void main()
 {
   final String InputFileName = "INPUT.TXT";
   final String OutputFileName = "OUTPUT.TXT";
-  final String GrasshopperSurvives = "YES";
+  final String GrasshopperSurvived = "YES";
 
   InputData inputData = fillInputData(InputFileName);
   if (inputData == null)
@@ -11,23 +11,21 @@ void main()
   }
 
   Grasshopper grasshopper = new Grasshopper();
+  grasshopper.setTravelPlan(inputData.getGrasshopperLocations());
   Frog frog = new Frog(inputData.getFrogLocation(), inputData.getFrogTongueLength());
 
-  int fedIndex = 0;
-  for (int i = 0; i < inputData.getNumberOfGrasshopperJumps(); i++)
+  while (!grasshopper.atEnd())
   {
-    Point nextLocation = inputData.getGrasshopperLocation(i);
-    grasshopper.jumpsTo(nextLocation);
-
+    grasshopper.jump();
     if (frog.canFeed(grasshopper.getLocation()))
     {
-      fedIndex = i + 1;
       break;
     }
+
+    grasshopper.notifyJumpSuccess();
   }
 
-  // fedIndex == 0 means that the grasshopper has not been fed
-  String result = fedIndex > 0 ? String.valueOf(fedIndex) : GrasshopperSurvives;
+  String result = grasshopper.atEnd() ? GrasshopperSurvived : String.valueOf(grasshopper.getPointNumber());
   writeOutputFile(OutputFileName, result);
 }
 
