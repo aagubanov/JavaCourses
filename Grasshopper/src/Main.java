@@ -2,6 +2,7 @@ void main()
 {
   final String InputFileName = "INPUT.TXT";
   final String OutputFileName = "OUTPUT.TXT";
+  final String GrasshopperSurvives = "YES";
 
   InputData inputData = fillInputData(InputFileName);
   if (inputData == null)
@@ -28,7 +29,9 @@ void main()
     }
   }
 
-  System.out.println(fedIndex);
+  // fedIndex == 0 means that the grasshopper has not been fed
+  String result = fedIndex > 0 ? String.valueOf(fedIndex) : GrasshopperSurvives;
+  writeOutputFile(OutputFileName, result);
 }
 
 private static InputData fillInputData(String inputFileName)
@@ -140,5 +143,20 @@ private static int tryParseInt(String intAsString)
   catch (NumberFormatException e)
   {
     return -1;
+  }
+}
+
+private static void writeOutputFile(String outputFileName, String outputString)
+{
+  try
+  {
+    Path path = Path.of(outputFileName);
+
+    // Overwrites an existing file
+    Files.writeString(path, outputString);
+  }
+  catch (IOException e)
+  {
+    System.out.printf("ОШИБКА: не удалось записать в файл '%s'\n", outputFileName);
   }
 }
