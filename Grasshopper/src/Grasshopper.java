@@ -2,12 +2,11 @@ public class Grasshopper
 {
   private Point location;
 
-  public Grasshopper(Point location)
+  public Grasshopper()
   {
-    this.location = location;
   }
 
-  public void jumpTo(Point newLocation)
+  public void jumpsTo(Point newLocation)
   {
     location = newLocation;
   }
