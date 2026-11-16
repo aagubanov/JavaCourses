@@ -13,16 +13,13 @@ void main()
   Grasshopper grasshopper = new Grasshopper();
   Frog frog = new Frog(inputData.getFrogLocation(), inputData.getFrogTongueLength());
 
-  Point frogLocation = frog.getLocation();
-  int frogTongueLength = frog.getTongueLength();
-
   int fedIndex = 0;
   for (int i = 0; i < inputData.getNumberOfGrasshopperJumps(); i++)
   {
     Point nextLocation = inputData.getGrasshopperLocation(i);
     grasshopper.jumpsTo(nextLocation);
 
-    if (grasshopper.isFed(frogLocation, frogTongueLength))
+    if (frog.canEat(grasshopper.getLocation()))
     {
       fedIndex = i + 1;
       break;
