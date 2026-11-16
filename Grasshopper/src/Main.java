@@ -19,7 +19,7 @@ void main()
     Point nextLocation = inputData.getGrasshopperLocation(i);
     grasshopper.jumpsTo(nextLocation);
 
-    if (frog.canEat(grasshopper.getLocation()))
+    if (frog.canFeed(grasshopper.getLocation()))
     {
       fedIndex = i + 1;
       break;

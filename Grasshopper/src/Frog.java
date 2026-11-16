@@ -9,7 +9,7 @@ public class Frog
     this.tongueLength = tongueLength;
   }
 
-  public boolean canEat(Point victimLocation)
+  public boolean canFeed(Point victimLocation)
   {
     return Point.distance(location, victimLocation) <= tongueLength;
   }
