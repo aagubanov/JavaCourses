@@ -128,22 +128,11 @@ private static int[] getIntegersFromLine(String line, int count)
   int[] numbers = new int[count];
   for (int i = 0; i < count; i++)
   {
-    numbers[i] = tryParseInt(numbersAsStrings[i]);
+    // No way to recover when a string is not a valid integer
+    numbers[i] = Integer.parseInt(numbersAsStrings[i]);
   }
 
   return numbers;
-}
-
-private static int tryParseInt(String intAsString)
-{
-  try
-  {
-    return Integer.parseInt((intAsString));
-  }
-  catch (NumberFormatException e)
-  {
-    return -1;
-  }
 }
 
 private static void writeOutputFile(String outputFileName, String outputString)
