@@ -34,7 +34,7 @@ void main()
 
 private int calculateMaxIncome(int numberOfDays, int[] prices)
 {
-  // Every centimeter should be sold by the maximum price over the remaining days
+  // Every centimeter should be sold for the maximum price over the remaining days
   int maxRemainingPrice = 0;
   int income = 0;
 
@@ -43,10 +43,10 @@ private int calculateMaxIncome(int numberOfDays, int[] prices)
     int dayPrice = prices[i];
     if (dayPrice > maxRemainingPrice)
     {
-      // The last-night centimeter is sold by the highest available price
+      // The last-night centimeter is sold for the highest available price
       maxRemainingPrice = dayPrice;
     }
-    // else the last-night centimeter will be sold later by the highest available price
+    // else the last-night centimeter will be sold later for the highest available price
 
     income += maxRemainingPrice;
   }
