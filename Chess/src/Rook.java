@@ -9,4 +9,9 @@ public class Rook extends Piece
   {
     return Type.ROOK;
   }
+
+  public Gender getGender()
+  {
+    return Gender.FEMALE;
+  }
 }

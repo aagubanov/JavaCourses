@@ -9,4 +9,9 @@ public class Queen extends Piece
   {
     return Type.QUEEN;
   }
+
+  public Gender getGender()
+  {
+    return Gender.MALE;
+  }
 }

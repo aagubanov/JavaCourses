@@ -9,4 +9,9 @@ public class Knight extends Piece
   {
     return Type.KNIGHT;
   }
+
+  public Gender getGender()
+  {
+    return Gender.MALE;
+  }
 }

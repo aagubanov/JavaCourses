@@ -9,4 +9,9 @@ public class Pawn extends Piece
   {
     return Type.PAWN;
   }
+
+  public Gender getGender()
+  {
+    return Gender.FEMALE;
+  }
 }

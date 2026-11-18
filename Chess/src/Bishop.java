@@ -9,4 +9,9 @@ public class Bishop extends Piece
   {
     return Type.BISHOP;
   }
+
+  public Gender getGender()
+  {
+    return Gender.MALE;
+  }
 }

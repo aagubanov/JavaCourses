@@ -9,4 +9,9 @@ public class King extends Piece
   {
     return Type.KING;
   }
+
+  public Gender getGender()
+  {
+    return Gender.MALE;
+  }
 }
