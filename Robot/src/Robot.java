@@ -3,18 +3,27 @@ import java.util.HashSet;
 public class Robot
 {
   private Direction direction;
+
+  private  record Location(int x, int y)
+  {
+  };
+
   private Location location;
   private final HashSet<Location> locations;
-  private boolean deja;
 
-  public Robot(Direction direction, Location location)
+  private boolean hasRepeatedLocation;
+  private int stepsUpToRepeat;
+
+  public Robot()
   {
-    this.direction = direction;
-    this.location = location;
+    direction = Direction.FORWARD;
+    location = new Location(0, 0);
 
     locations  = new HashSet<Location>();
     locations.add(this.location);
-    deja = false;
+
+    hasRepeatedLocation = false;
+    stepsUpToRepeat = -1;
   }
 
   public void execute(char command)
@@ -49,20 +58,21 @@ public class Robot
       case Direction.LEFT -> location = new Location(location.x() - 1, location.y());
     }
 
-    if (!locations.add(location))
+    if (hasRepeatedLocation)
     {
-      deja = true;
+      // Further processing is no longer required
+      return;
+    }
+
+    hasRepeatedLocation = !locations.add(location);
+    if (hasRepeatedLocation)
+    {
+      stepsUpToRepeat = locations.size();
     }
   }
 
-  public boolean getDeja()
+  public int getStepsUpToRepeat()
   {
-    return deja;
-  }
-
-  public int getSteps()
-  {
-    int locationCount = locations.size();
-    return deja ? locationCount : -1;
+    return stepsUpToRepeat;
   }
 }

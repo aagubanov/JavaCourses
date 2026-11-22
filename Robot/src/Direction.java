@@ -1,3 +1,4 @@
+// Circular enumeration
 public enum Direction
 {
   FORWARD,
