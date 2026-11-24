@@ -4,7 +4,10 @@ void main()
   Cell b = new Cell(3, 3, "violet");
 
   List<IDistanceCalculator> calculators = List.of(
-    new EuclidDistanceCalculator(), new ManhattanDistanceCalculator(), new MooreDistanceCalculator()
+    new EuclidDistanceCalculator(),
+    new ManhattanDistanceCalculator(),
+    new MooreDistanceCalculator(),
+    new EdgeDistanceCalculator()
   );
 
   for (IDistanceCalculator calculator : calculators)
