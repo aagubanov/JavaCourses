@@ -1,7 +1,7 @@
 void main()
 {
   Cell a = new Cell(1, 1, "pink");
-  Cell b = new Cell(3, 3, "violet");
+  Cell b = new Cell(3, 2, "violet");
 
   List<IDistanceCalculator> calculators = List.of(
     new EuclidDistanceCalculator(),
