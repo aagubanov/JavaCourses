@@ -21,19 +21,18 @@ public class Cell
     return y;
   }
 
-  public boolean getInfected()
-  {
-    return infected;
-  }
-
   public void infect()
   {
     infected = true;
   }
 
-  @Override
-  public String toString()
+  public boolean isInfected()
   {
-    return "[" + (y + 1) + ", " + (x + 1) + "]";
+    return infected;
+  }
+
+  public int distanceTo(Cell cell)
+  {
+    return Math.abs(x - cell.getX()) + Math.abs(y - cell.getY());
   }
 }

@@ -2,12 +2,16 @@ import java.util.ArrayList;
 
 public class Matrix
 {
+  private final int width;
+  private final int height;
   private final Cell[][] cells;
 
   public Matrix(int width, int height)
   {
-    cells = new Cell[width][height];
+    this.width = width;
+    this.height = height;
 
+    cells = new Cell[width][height];
     for (int j = 0; j < height; j++)
     {
       for (int i = 0; i < width; i++)
@@ -15,6 +19,16 @@ public class Matrix
         cells[i][j] = new Cell(i, j, false);
       }
     }
+  }
+
+  public int getWidth()
+  {
+    return width;
+  }
+
+  public int getHeight()
+  {
+    return height;
   }
 
   public Cell getCell(int x, int y)
@@ -27,23 +41,5 @@ public class Matrix
     Cell cell = cells[x][y];
     cell.infect();
     return cell;
-  }
-
-  public ArrayList<Cell> infectedCells()
-  {
-    ArrayList<Cell> infectedCells = new ArrayList<>();
-
-    for (int j = 0; j < cells[0].length; j++)
-    {
-      for (int i = 0; i < cells.length; i++)
-      {
-        if (cells[i][j].getInfected())
-        {
-          infectedCells.add(cells[i][j]);
-        }
-      }
-    }
-
-    return infectedCells;
   }
 }
