@@ -3,8 +3,12 @@ void main()
   Cell a = new Cell(1, 1);
   Cell b = new Cell(2, 2);
 
-  EuclidDistanceCalculator calculator = new EuclidDistanceCalculator();
-  System.out.println("Евклидовское расстояние = " + new EuclidDistanceCalculator().distance(a, b));
-  System.out.println("Манхэттенское расстояние = " + new ManhattanDistanceCalculator().distance(a, b));
-  System.out.println("Расстояние по Муру = " + new MooreDistanceCalculator().distance(a, b));
+  List<IDistanceCalculator> calculators = List.of(
+    new EuclidDistanceCalculator(), new ManhattanDistanceCalculator(), new MooreDistanceCalculator()
+  );
+
+  for (IDistanceCalculator calculator : calculators)
+  {
+    System.out.println(calculator.toString() + calculator.distance(a, b));
+  }
 }
