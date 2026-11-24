@@ -9,7 +9,7 @@ void main()
   int y = scanner.nextInt();
 
   List<IArithmeticOperation> operations = List.of(
-    new Addition(), new Subtraction(), new Multiplication(), new Division()
+    new Addition(), new Subtraction(), new Multiplication(), new Division(), new Power()
   );
 
   for (IArithmeticOperation operation : operations)
