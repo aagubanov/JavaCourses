@@ -1,4 +1,4 @@
-import junit.framework.Assert;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 
@@ -15,7 +15,7 @@ public class TravelEvaluatorTest
   @MethodSource("getTestCases")
   void evaluateGrasshopperTravel(TestCase tc) {
     InputData inputData = new InputData(tc.frogLocation, tc.frogTongueLength, tc.grasshopperLocations);
-    Assert.assertEquals(tc.expected, TravelEvaluator.getGrasshopperTravelResult(inputData));
+    Assertions.assertEquals(tc.expected, TravelEvaluator.getGrasshopperTravelResult(inputData));
   }
 
   private static Stream<TestCase> getTestCases() {
