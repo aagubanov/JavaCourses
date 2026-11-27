@@ -1,3 +1,6 @@
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
 void main()
 {
   final String INPUT_FILE_NAME = "INPUT.TXT";
@@ -22,6 +25,7 @@ void main()
   saveResult(OUTPUT_FILE_NAME, output);
 }
 
+@Nullable
 private static Scanner tryGetScanner(String fileName)
 {
   try
@@ -34,7 +38,8 @@ private static Scanner tryGetScanner(String fileName)
   }
 }
 
-private static InputData fillInputData(Scanner scanner)
+@Nullable
+private static InputData fillInputData(@NotNull Scanner scanner)
 {
   // First line: a number of grasshopper's jumps; coordinates of a frog; length of a frog's tongue
   if (!scanner.hasNextInt())
