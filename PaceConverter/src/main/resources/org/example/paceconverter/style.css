@@ -1,0 +1,6 @@
+.text-field:disabled
+{
+    -fx-opacity: 0.9;
+    -fx-text-fill: #222222;
+    -fx-background-color: #f0f0f0;
+}
